@@ -27,12 +27,9 @@ The app is ideal for students, professionals, and anyone who wants to be more mi
 
 ## 🛠️ Tech Stack
 
-> _(Update this section based on your actual setup)_
-
-- **Frontend:** Flutter / React Native / Android (Java or Kotlin)
-- **Backend:** Firebase / Local Storage / REST API
-- **Database:** Firebase Firestore / SQLite
-- **State Management:** Provider / Riverpod / Redux
+- **Frontend:** Flutter 
+- **Backend:** Supabase 
+- **Database:** Supabase / SQLite
 
 ---
 
@@ -40,7 +37,7 @@ The app is ideal for students, professionals, and anyone who wants to be more mi
 
 ### Prerequisites
 
-- Node.js / Flutter SDK / Android Studio
+-Flutter SDK / Android Studio
 - Git
 
 ### Installation
@@ -53,13 +50,7 @@ git clone https://github.com/your-username/tubong-ipon-saving.git
 cd tubong-ipon-saving
 
 # Install dependencies
-npm install
-# or
 flutter pub get
-
-# Run the app
-npm run dev
-# or
 flutter run
 ```
 
