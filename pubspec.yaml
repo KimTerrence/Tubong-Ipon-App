@@ -35,6 +35,9 @@ dependencies:
   intl: ^0.19.0 #  date formatting
   sqflite: ^2.3.0
   path: ^1.8.3
+  path_provider: ^2.1.2  # To find a place to save the file
+  share_plus: ^9.0.0
+  permission_handler: ^11.0.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
