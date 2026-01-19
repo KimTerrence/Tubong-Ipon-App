@@ -1,4 +1,5 @@
-# Tubong Finance Tracker 💰
+# Tubong Ipon 💰
+### Finance Tracker App
 
 **Tubong Ipon Saving** is a simple and user-friendly **expenses and savings tracker app** designed to help users manage their daily finances, track spending habits, and grow their savings consistently.
 
