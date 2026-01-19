@@ -1,10 +1,14 @@
+// lib/main.dart
+
 import 'package:flutter/material.dart';
 import 'screens/savings_tab.dart';
 import 'screens/expenses_tab.dart';
 import 'screens/dashboard_tab.dart';
+import 'screens/income_tab.dart';
+import 'screens/settings_tab.dart'; // Import the new file
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized(); // Required for database
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -33,17 +37,19 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int _selectedIndex = 1; // Default to Dashboard (Middle)
-
+  int _selectedIndex = 2; // Default to Dashboard (Middle)
+  
   late final List<Widget> _pages;
 
   @override
   void initState() {
     super.initState();
     _pages = [
-      const SavingsCalendarTab(),
-      DashboardTab(onTabChange: _changeTab), // Pass callback
-      const ExpensesListTab(),
+      const IncomeListTab(),      // 0
+      const SavingsCalendarTab(), // 1
+      DashboardTab(onTabChange: _changeTab), // 2 (Dashboard)
+      const ExpensesListTab(),    // 3
+      const SettingsTab(),        // 4 (New Settings Tab)
     ];
   }
 
@@ -56,27 +62,38 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // IndexedStack keeps pages alive so you don't lose scroll position
-      // remove 'IndexedStack' and use '_pages[_selectedIndex]' if you prefer reloading data every switch
-      body: _pages[_selectedIndex], 
+      body: _pages[_selectedIndex],
       bottomNavigationBar: NavigationBar(
         selectedIndex: _selectedIndex,
         onDestinationSelected: _changeTab,
+        // Make labels smaller so 5 items fit nicely
+        labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected, 
         destinations: const [
           NavigationDestination(
+            icon: Icon(Icons.attach_money), 
+            selectedIcon: Icon(Icons.attach_money, color: Colors.teal),
+            label: 'Income'
+          ),
+          NavigationDestination(
             icon: Icon(Icons.calendar_month_outlined),
-            selectedIcon: Icon(Icons.calendar_month, color: Colors.teal),
-            label: 'Savings',
+            selectedIcon: Icon(Icons.calendar_month, color: Colors.blue), 
+            label: 'Savings'
           ),
           NavigationDestination(
             icon: Icon(Icons.dashboard_outlined),
-            selectedIcon: Icon(Icons.dashboard, color: Colors.blue),
-            label: 'Dashboard',
+            selectedIcon: Icon(Icons.dashboard, color: Colors.indigo), 
+            label: 'Home'
           ),
           NavigationDestination(
             icon: Icon(Icons.money_off_outlined),
-            selectedIcon: Icon(Icons.money_off, color: Colors.red),
-            label: 'Expenses',
+            selectedIcon: Icon(Icons.money_off, color: Colors.red), 
+            label: 'Expenses'
+          ),
+          // NEW SETTINGS TAB
+          NavigationDestination(
+            icon: Icon(Icons.settings_outlined),
+            selectedIcon: Icon(Icons.settings, color: Colors.grey), 
+            label: 'Settings'
           ),
         ],
       ),
